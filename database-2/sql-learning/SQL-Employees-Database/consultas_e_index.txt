@@ -1,0 +1,38 @@
+-- Nome e cargo dos funcionários ingressos depois de março
+SELECT nome, cargo FROM funcionario WHERE data_ingresso > '2024-03-01'
+
+-- Verificar quais funcionários recebem acima de um salário mínimo
+SELECT * FROM funcionario WHERE salario > 1412.00
+
+-- Descobrindo a média salarial dos programadores
+SELECT ROUND(AVG(salario), 2) AS media_salarial FROM funcionario WHERE cargo = 'Programador';
+
+-- Checar quais produtos já perderam sua validade
+SELECT * FROM produto WHERE validade < CURRENT_DATE;
+
+-- Quais fornecedores têm contratos válidos até o final do ano
+SELECT * FROM Fornecedor WHERE TO_DATE(validade_contrato, 'YYYY-MM-DD') > CURRENT_DATE AND TO_DATE(validade_contrato, 'YYYY-MM-DD') < '2024-12-31';
+
+-- Todos os eventos que ocorrerão nos meses de outubro, novembro e dezembro
+SELECT * FROM calendariodeeventos WHERE data > '2024-10-01' AND data < '2024-12-31'
+
+-- Produtos acima de 100 unidades provenientes de fornecedores da categoria militar
+SELECT f.nome, p.categoria FROM produto p INNER JOIN fornecedor f ON p.fornecedor_id = f.id WHERE f.categoria_fornecida = 'Militar';
+
+-- Retornar apenas os eventos obrigatórios
+SELECT * FROM calendariodeeventos WHERE convocacao = 'Obrigatória';
+
+-- Contagem de produtos por categoria
+SELECT categoria, COUNT(*) AS quantidade FROM produto GROUP BY categoria;
+
+-- Média salarial por cargo
+SELECT cargo, ROUND(AVG(salario), 2) AS media_salarial_cargo FROM funcionario GROUP BY cargo;
+
+
+-- Criando index que melhore o desempenho na consulta número 7 usando 'categoria' como âncora
+CREATE INDEX idx_produto_categoria ON produto(categoria)
+
+-- Exemplo de uso
+EXPLAIN SELECT f.nome, p.categoria FROM produto p INNER JOIN fornecedor f ON p.fornecedor_id = f.id WHERE f.categoria_fornecida = 'Militar';
+
+- Não encontrei nenhum caso que o Postgres prefira usar o index porque a base de dados é pequena e seria ineficiente, mas entendi o uso e sua aplicabilidade.

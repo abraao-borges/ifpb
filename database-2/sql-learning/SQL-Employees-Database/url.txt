@@ -1,0 +1,6 @@
+jdbc:postgresql://ep-hidden-cloud-a5le5ci0.us-east-2.aws.neon.tech/empresa-gerenciador?user=empresa-gerenciador_owner&password=3DUlnhZaL8NW&sslmode=require
+
+PGHOST='ep-hidden-cloud-a5le5ci0.us-east-2.aws.neon.tech'
+PGDATABASE='empresa-gerenciador'
+PGUSER='empresa-gerenciador_owner'
+PGPASSWORD='3DUlnhZaL8NW'

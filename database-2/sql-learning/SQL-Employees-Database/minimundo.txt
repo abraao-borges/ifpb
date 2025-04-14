@@ -1,0 +1,13 @@
+Minimundo:
+
+O sistema gerenciador da empresa tem como objetivo auxiliar na gestão de funcionários, produtos, fornecedores e eventos. Ele conta com quatro tabelas principais:
+
+Funcionários: Armazena informações pessoais e profissionais dos funcionários da empresa, como nome, email, data de ingresso, cargo e salário. Cada funcionário pode ocupar diferentes cargos, e seus salários podem variar de acordo com o cargo e o tempo de empresa. O sistema também deverá permitir que novos funcionários sejam adicionados e que atualizações sejam feitas nos dados.
+
+Produtos: Gerencia o estoque de produtos da empresa, armazenando o nome do produto, a categoria à qual pertence (por exemplo, alimentícios, eletrônicos, etc.), data de validade (quando aplicável) e quantidade em estoque. O sistema deverá monitorar os produtos para evitar que se esgotem ou que estejam com data de validade vencida.
+
+Fornecedores: Controla os fornecedores da empresa, com informações sobre o nome da empresa fornecedora, a categoria de produtos ou serviços fornecidos e a validade do contrato. O sistema deverá alertar sobre contratos que estejam próximos do vencimento e registrar novas parcerias ou renovações.
+
+Calendário de Eventos: Registra eventos importantes da empresa, como reuniões, treinamentos e comemorações. Cada evento possui uma data, um tipo (por exemplo, reunião, workshop, etc.) e uma indicação se a participação é obrigatória ou opcional.
+
+Este sistema tem como objetivo centralizar e otimizar a gestão de informações da empresa, promovendo a eficiência na administração de pessoal, estoque, contratos e eventos corporativos.
