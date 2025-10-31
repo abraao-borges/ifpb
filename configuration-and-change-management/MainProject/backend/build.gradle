@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.5.7'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.app_bancario'
+version = '0.0.1-SNAPSHOT'
+description = 'Aplicativo bancário multiplataforma.'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Dependência principal do Spring Boot para Web (API REST)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    
+    // Dependência para a criação de testes com JUnit
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+    // Dependência para o Spring Boot funcionar com o Gradle (plugin de testes e deploy)
+    implementation 'org.springframework.boot:spring-boot-starter'
+    
+    // Dependência para suportar JSON (serialização e desserialização) automaticamente no Spring
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+    // Dependência para o Spring Boot manipular CORS (opcional)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Para uso do Spring DevTools (habilita hot-reload durante o desenvolvimento)
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Banco do Brasil</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6c019, #003399); /* Cores do Banco do Brasil */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 350px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #003399;
+        }
+
+        .saldo {
+            background-color: #e8f6ff;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #003399;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #001f66;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Banco do Brasil</h2>
+        <div class="saldo">
+            Saldo atual: <strong>R$ <span id="saldo">1500.00</span></strong>
+        </div>
+
+        <form id="form-transferencia">
+            <label for="idDestino">ID do destinatário:</label>
+            <input type="text" id="idDestino" name="idDestino" required>
+
+            <label for="valor">Valor da transferência (R$):</label>
+            <input type="number" id="valor" name="valor" min="0.01" step="0.01" required>
+
+            <button type="submit">Transferir</button>
+        </form>
+    </div>
+
+    <script>
+        let saldo = 1500.00;
+
+        document.getElementById("form-transferencia").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const idDestino = document.getElementById("idDestino").value.trim();
+            const valor = parseFloat(document.getElementById("valor").value);
+            const mensagem = document.getElementById("mensagem");
+
+            if (!idDestino || isNaN(valor) || valor <= 0) {
+                alert("Preencha todos os campos corretamente.");
+                return;
+            }
+
+            if (valor > saldo) {
+                alert("Saldo insuficiente.");
+                return;
+            }
+
+            saldo -= valor;
+            document.getElementById("saldo").textContent = saldo.toFixed(2);
+            alert(`Transferência de R$ ${valor.toFixed(2)} para ID ${idDestino} realizada com sucesso!`);
+
+            // Limpa o formulário
+            document.getElementById("form-transferencia").reset();
+        });
+    </script>
+</body>
+</html>

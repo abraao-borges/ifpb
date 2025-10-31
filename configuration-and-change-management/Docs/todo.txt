@@ -1,0 +1,4 @@
+todos os itens de configuração levantamento, novos arquivos de mudança caixa e banco, solicitação de mudança, impacto mudança, telas pra web mobile e desktop
+3 interfaces com um único login com possiblidade de faer transferência
+dois bancos, 3 interfaces
+valor, conta e valor transferencia (simples sistema bancário)

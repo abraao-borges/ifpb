@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login Bancário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0071bb, #f1c40f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 320px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .bancos {
+            margin-top: 15px;
+        }
+
+        .bancos label {
+            display: inline-block;
+            margin-right: 10px;
+            font-weight: normal;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0071bb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005c94;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login Bancário</h2>
+        <form id="loginForm">
+            <label for="usuario">Usuário:</label>
+            <input type="text" id="usuario" name="usuario" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+
+            <div class="bancos">
+                <p>Escolha o banco:</p>
+                <label>
+                    <input type="radio" name="banco" value="bb" required>
+                    Banco do Brasil
+                </label>
+                <label>
+                    <input type="radio" name="banco" value="caixa">
+                    Caixa Econômica Federal
+                </label>
+            </div>
+
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const bancoSelecionado = document.querySelector('input[name="banco"]:checked');
+            if (bancoSelecionado) {
+                const banco = bancoSelecionado.value;
+                if (banco === "bb") {
+                    window.location.href = "banco_do_brasil.html";  // Redireciona para o Banco do Brasil
+                } else if (banco === "caixa") {
+                    window.location.href = "caixa_economica.html";  // Redireciona para a Caixa Econômica
+                }
+            } else {
+                alert("Por favor, selecione um banco.");
+            }
+        });
+    </script>
+</body>
+</html>
